@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 54 54" width="54" height="54">
+  <!-- Top-left corner (user's lt) -->
+  <path d="M18,2h-3.53c-.26,6.78-5.7,12.22-12.47,12.47v3.53"
+    fill="#0be394" stroke="red" stroke-miterlimit="10" stroke-width="4"/>
+  <!-- Top-right corner (user's rt, translated) -->
+  <g transform="translate(36,0)">
+    <path d="M16,18v-3.53c-6.78-.26-12.22-5.7-12.47-12.47H0"
+      fill="#0be394" stroke="red" stroke-miterlimit="10" stroke-width="4"/>
+  </g>
+  <!-- Bottom-left corner (user's lb, translated) -->
+  <g transform="translate(0,36)">
+    <path d="M2,0v3.53c6.78.26,12.22,5.7,12.47,12.47h3.53"
+      fill="#0be394" stroke="red" stroke-miterlimit="10" stroke-width="4"/>
+  </g>
+  <!-- Bottom-right corner (user's rb, translated) -->
+  <g transform="translate(36,36)">
+    <path d="M0,16h3.53c.26-6.78,5.7-12.22,12.47-12.47V0"
+      fill="#0be394" stroke="red" stroke-miterlimit="10" stroke-width="4"/>
+  </g>
+  <!-- Top middle edge: 3 red dots -->
+  <g transform="translate(18,0)">
+    <circle cx="3" cy="9" r="2" fill="red"/>
+    <circle cx="9" cy="9" r="2" fill="red"/>
+    <circle cx="15" cy="9" r="2" fill="red"/>
+  </g>
+  <!-- Bottom middle edge -->
+  <g transform="translate(18,36)">
+    <circle cx="3" cy="9" r="2" fill="red"/>
+    <circle cx="9" cy="9" r="2" fill="red"/>
+    <circle cx="15" cy="9" r="2" fill="red"/>
+  </g>
+  <!-- Left middle edge -->
+  <g transform="translate(0,18)">
+    <circle cx="9" cy="3" r="2" fill="red"/>
+    <circle cx="9" cy="9" r="2" fill="red"/>
+    <circle cx="9" cy="15" r="2" fill="red"/>
+  </g>
+  <!-- Right middle edge -->
+  <g transform="translate(36,18)">
+    <circle cx="9" cy="3" r="2" fill="red"/>
+    <circle cx="9" cy="9" r="2" fill="red"/>
+    <circle cx="9" cy="15" r="2" fill="red"/>
+  </g>
+</svg>
