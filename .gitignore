@@ -36,3 +36,6 @@ Thumbs.db
 
 # Test
 coverage/
+
+# Design source files (Illustrator, Figma exports, raw references)
+design-assets/
