@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_1" data-name="圖層_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 82 82">
+  <!-- Generator: Adobe Illustrator 30.3.0, SVG Export Plug-In . SVG Version: 2.1.3 Build 182)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #a3a350;
+        fill-opacity: .5;
+      }
+
+      .st1 {
+        fill: #0be394;
+        stroke: red;
+      }
+
+      .st1, .st2 {
+        stroke-miterlimit: 10;
+        stroke-width: 4px;
+      }
+
+      .st2 {
+        fill: none;
+        stroke: #0be394;
+      }
+    </style>
+  </defs>
+  <rect class="st0" x="32" y="32" width="18" height="18"/>
+  <g>
+    <path class="st0" d="M32,32v-16h-3.5c-.3,6.8-5.7,12.2-12.5,12.5v3.5h16Z"/>
+    <path class="st1" d="M32,16h-3.5c-.3,6.8-5.7,12.2-12.5,12.5v3.5"/>
+  </g>
+  <g>
+    <path class="st0" d="M32,50h-16v3.5c6.8.3,12.2,5.7,12.5,12.5h3.5v-16Z"/>
+    <path class="st1" d="M16,50v3.5c6.8.3,12.2,5.7,12.5,12.5h3.5"/>
+  </g>
+  <g>
+    <path class="st0" d="M50,32h16s0-3.5,0-3.5c-6.8-.3-12.2-5.7-12.5-12.5h-3.5s0,16,0,16Z"/>
+    <path class="st1" d="M66,32v-3.5c-6.8-.3-12.2-5.7-12.5-12.5h-3.5"/>
+  </g>
+  <g>
+    <path class="st0" d="M50,50v16s3.5,0,3.5,0c.3-6.8,5.7-12.2,12.5-12.5v-3.5s-16,0-16,0Z"/>
+    <path class="st1" d="M50,66h3.5c.3-6.8,5.7-12.2,12.5-12.5v-3.5"/>
+  </g>
+  <g>
+    <path class="st0" d="M9,32h23v18H9c-5,0-9-4-9-9h0c0-5,4-9,9-9Z"/>
+    <path class="st2" d="M18,34h-9c-3.9,0-7,3.1-7,7h0c0,3.9,3.1,7,7,7h9"/>
+  </g>
+  <g>
+    <path class="st0" d="M34,7h23v18h-23c-5,0-9-4-9-9h0c0-5,4-9,9-9Z" transform="translate(57 -25) rotate(90)"/>
+    <path class="st2" d="M48,18v-9c0-3.9-3.1-7-7-7h0c-3.9,0-7,3.1-7,7v9"/>
+  </g>
+  <g>
+    <path class="st0" d="M34,57h23v18h-23c-5,0-9-4-9-9h0c0-5,4-9,9-9Z" transform="translate(-25 107) rotate(-90)"/>
+    <path class="st2" d="M34,64v9c0,3.9,3.1,7,7,7h0c3.9,0,7-3.1,7-7v-9"/>
+  </g>
+  <g>
+    <path class="st0" d="M59,32h23v18h-23c-5,0-9-4-9-9h0c0-5,4-9,9-9Z" transform="translate(132 82) rotate(-180)"/>
+    <path class="st2" d="M64,48h9c3.9,0,7-3.1,7-7h0c0-3.9-3.1-7-7-7h-9"/>
+  </g>
+</svg>

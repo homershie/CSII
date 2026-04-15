@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_2" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 82 82">
+  <!-- Generator: Adobe Illustrator 30.3.0, SVG Export Plug-In . SVG Version: 2.1.3 Build 182)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #a3a350;
+      }
+
+      .st1 {
+        fill: #0be394;
+        stroke: red;
+      }
+
+      .st1, .st2 {
+        stroke-miterlimit: 10;
+        stroke-width: 4px;
+      }
+
+      .st2 {
+        fill: none;
+        stroke: #0be394;
+      }
+    </style>
+  </defs>
+  <path class="st0" d="M73,32h-5v-5.5h-1.9c-5.7-.3-10.3-4.9-10.5-10.6v-1.9h-5.5v-5c0-5-4-9-9-9s-9,4-9,9v5h-5.5v1.9c-.3,5.7-4.9,10.3-10.6,10.5h-1.9v5.5h-5c-5,0-9,4-9,9s4,9,9,9h5v5.5h1.9c5.7.3,10.3,4.9,10.5,10.6v1.9h5.5v5c0,5,4,9,9,9s9-4,9-9v-5h5.5v-1.9c.3-5.7,4.9-10.3,10.6-10.5h1.9v-5.5h5c5,0,9-4,9-9s-4-9-9-9Z"/>
+  <path class="st1" d="M32,16h-3.5c-.3,6.8-5.7,12.2-12.5,12.5v3.5"/>
+  <path class="st1" d="M16,50v3.5c6.8.3,12.2,5.7,12.5,12.5h3.5"/>
+  <path class="st1" d="M66,32v-3.5c-6.8-.3-12.2-5.7-12.5-12.5h-3.5"/>
+  <path class="st1" d="M50,66h3.5c.3-6.8,5.7-12.2,12.5-12.5v-3.5"/>
+  <path class="st2" d="M48,18v-9c0-3.9-3.1-7-7-7h0c-3.9,0-7,3.1-7,7v9"/>
+  <path class="st2" d="M34,64v9c0,3.9,3.1,7,7,7h0c3.9,0,7-3.1,7-7v-9"/>
+  <path class="st2" d="M18,34h-9c-3.9,0-7,3.1-7,7h0c0,3.9,3.1,7,7,7h9"/>
+  <path class="st2" d="M64,48h9c3.9,0,7-3.1,7-7h0c0-3.9-3.1-7-7-7h-9"/>
+</svg>

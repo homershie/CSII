@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_2" data-name="圖層 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 82 82">
+  <g id="_圖層_1-2" data-name="圖層 1">
+    <path d="M32,16h-3.53c-.26,6.78-5.7,12.22-12.47,12.47v3.53" style="fill: #0be394; stroke: red; stroke-miterlimit: 10; stroke-width: 4px;"/>
+    <path d="M16,50v3.53c6.78.26,12.22,5.7,12.47,12.47h3.53" style="fill: #0be394; stroke: red; stroke-miterlimit: 10; stroke-width: 4px;"/>
+    <path d="M66,32v-3.53c-6.78-.26-12.22-5.7-12.47-12.47h-3.53" style="fill: #0be394; stroke: red; stroke-miterlimit: 10; stroke-width: 4px;"/>
+    <path d="M50,66h3.53c.26-6.78,5.7-12.22,12.47-12.47v-3.53" style="fill: #0be394; stroke: red; stroke-miterlimit: 10; stroke-width: 4px;"/>
+    <path d="M48,18v-9c0-3.87-3.13-7-7-7h0c-3.87,0-7,3.13-7,7v9" style="fill: none; stroke: #0be394; stroke-miterlimit: 10; stroke-width: 4px;"/>
+    <path d="M34,64v9c0,3.87,3.13,7,7,7h0c3.87,0,7-3.13,7-7v-9" style="fill: none; stroke: #0be394; stroke-miterlimit: 10; stroke-width: 4px;"/>
+    <path d="M18,34h-9c-3.87,0-7,3.13-7,7h0c0,3.87,3.13,7,7,7h9" style="fill: none; stroke: #0be394; stroke-miterlimit: 10; stroke-width: 4px;"/>
+    <path d="M64,48h9c3.87,0,7-3.13,7-7h0c0-3.87-3.13-7-7-7h-9" style="fill: none; stroke: #0be394; stroke-miterlimit: 10; stroke-width: 4px;"/>
+  </g>
+</svg>
