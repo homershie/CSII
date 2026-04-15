@@ -18,16 +18,16 @@
 
 ## 2. 技術棧
 
-| 項目 | 選擇 | 理由 |
-|------|------|------|
-| 建置工具 | Vite 5 | 啟動快、HMR 即時、適合實驗迭代 |
-| UI 框架 | React 18 | 對齊公司主線，未來移植成本低 |
-| 語言 | TypeScript（`strict: true`） | 對齊公司嚴格度、抓真實 bug |
-| 樣式主力 | Tailwind CSS v3 | 公司主力工具，練手感 |
-| 樣式輔助 | CSS Modules | 複雜 CSS 技巧（border-image、keyframes、`@property`）寫原生 |
-| 路由 | React Router v6 | 心智模型貼近 Next App Router |
-| 測試 | Vitest | 僅測 Registry 核心邏輯 |
-| 程式碼品質 | ESLint + Prettier + Husky + lint-staged | 全開嚴格模式 |
+| 項目       | 選擇                                    | 理由                                                        |
+| ---------- | --------------------------------------- | ----------------------------------------------------------- |
+| 建置工具   | Vite 5                                  | 啟動快、HMR 即時、適合實驗迭代                              |
+| UI 框架    | React 18                                | 對齊公司主線，未來移植成本低                                |
+| 語言       | TypeScript（`strict: true`）            | 對齊公司嚴格度、抓真實 bug                                  |
+| 樣式主力   | Tailwind CSS v3                         | 公司主力工具，練手感                                        |
+| 樣式輔助   | CSS Modules                             | 複雜 CSS 技巧（border-image、keyframes、`@property`）寫原生 |
+| 路由       | React Router v6                         | 心智模型貼近 Next App Router                                |
+| 測試       | Vitest                                  | 僅測 Registry 核心邏輯                                      |
+| 程式碼品質 | ESLint + Prettier + Husky + lint-staged | 全開嚴格模式                                                |
 
 ## 3. 架構總覽
 
@@ -103,13 +103,13 @@ export type Category = 'css-techniques' | 'layouts' | 'components';
 export type Status = 'wip' | 'done' | 'archived';
 
 export interface ExperimentMeta {
-  slug: string;              // 從資料夾名推導，例：'border-image'
-  category: Category;        // 從路徑推導
+  slug: string; // 從資料夾名推導，例：'border-image'
+  category: Category; // 從路徑推導
   title: string;
   description: string;
   status: Status;
   tags: string[];
-  createdAt: string;         // 'YYYY-MM-DD'
+  createdAt: string; // 'YYYY-MM-DD'
   Component: LazyExoticComponent<ComponentType>;
 }
 ```
@@ -139,17 +139,14 @@ const modules = import.meta.glob<{
   default: Omit<ExperimentMeta, 'slug' | 'category'>;
 }>('/src/experiments/*/*/meta.ts', { eager: true });
 
-export const experiments: ExperimentMeta[] = Object.entries(modules).map(
-  ([path, mod]) => {
-    const parts = path.split('/');
-    const category = parts[parts.length - 3] as Category;
-    const slug = parts[parts.length - 2];
-    return { ...mod.default, slug, category };
-  }
-);
+export const experiments: ExperimentMeta[] = Object.entries(modules).map(([path, mod]) => {
+  const parts = path.split('/');
+  const category = parts[parts.length - 3] as Category;
+  const slug = parts[parts.length - 2];
+  return { ...mod.default, slug, category };
+});
 
-export const byCategory = (cat: Category) =>
-  experiments.filter((e) => e.category === cat);
+export const byCategory = (cat: Category) => experiments.filter((e) => e.category === cat);
 ```
 
 ### 路由組裝
@@ -207,12 +204,12 @@ export const byCategory = (cat: Category) =>
 
 ## 9. 測試策略
 
-| 層級 | 做法 |
-|------|------|
+| 層級          | 做法                                                              |
+| ------------- | ----------------------------------------------------------------- |
 | Registry 邏輯 | Vitest 單元測試，mock `import.meta.glob`，驗證 slug/category 解析 |
-| TypeScript | `tsc --noEmit` 當 smoke test，build 時跑 |
-| 實驗 demo | 不自動測，人眼 + DevTools |
-| 視覺回歸 | 不做 |
+| TypeScript    | `tsc --noEmit` 當 smoke test，build 時跑                          |
+| 實驗 demo     | 不自動測，人眼 + DevTools                                         |
+| 視覺回歸      | 不做                                                              |
 
 ### package.json scripts
 
@@ -250,13 +247,13 @@ export const byCategory = (cat: Category) =>
 
 ## 11. 未來擴充路線
 
-| 觸發時機 | 加什麼 |
-|----------|--------|
-| 實驗 >= 3 個 | 首頁 tags 篩選 |
+| 觸發時機       | 加什麼                                          |
+| -------------- | ----------------------------------------------- |
+| 實驗 >= 3 個   | 首頁 tags 篩選                                  |
 | 開始做公司切版 | `layouts/` 加 `breakpoints` meta + 響應式預覽框 |
-| 同事開始看 | 部署到 Vercel；card 加截圖縮圖 |
-| 實驗 > 15 個 | 加搜尋框 |
-| 要抽元件回公司 | README 加「如何抽取到 Next 專案」段落 |
+| 同事開始看     | 部署到 Vercel；card 加截圖縮圖                  |
+| 實驗 > 15 個   | 加搜尋框                                        |
+| 要抽元件回公司 | README 加「如何抽取到 Next 專案」段落           |
 
 ## 12. 設計原則摘要
 
