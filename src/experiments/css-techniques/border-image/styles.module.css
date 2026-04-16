@@ -55,6 +55,13 @@
   height: 100px;
 }
 
+/* ── background-clip 替代 fill ── */
+.demoBgClipFill {
+  background: rgba(163, 163, 80, 0.5);
+  background-clip: padding-box;
+  border-image-slice: 32;
+}
+
 .fillGroup {
   display: flex;
   flex-direction: column;

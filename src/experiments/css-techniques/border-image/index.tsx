@@ -181,6 +181,33 @@ export default function BorderImageDemo() {
           </div>
         ))}
       </section>
+
+      <section className={styles.section}>
+        <div className={styles.sectionLabel}>
+          background-clip: padding-box 替代 fill（避免角落重複）
+        </div>
+        <div className={styles.fillGroup}>
+          <div className={styles.fillGroupLabel}>
+            frame02.svg（無 fill）+ background-clip: padding-box
+          </div>
+          <div className={styles.resizeWrap}>
+            <div className={styles.grid}>
+              {modes.map(({ key, className }) => (
+                <div key={key}>
+                  <div className={styles.label}>{key}</div>
+                  <div
+                    className={`${styles.demo} ${className} ${styles.demoSvgTest} ${styles.demoBgClipFill}`}
+                  />
+                  <pre
+                    className={styles.code}
+                  >{`border-image-repeat: ${key};\nborder-image-slice: 32;\nbackground: rgba(163,163,80,.5);\nbackground-clip: padding-box;`}</pre>
+                </div>
+              ))}
+            </div>
+            <div className={styles.resizeHint}>← 拖曳右下角調整寬度，觀察填色邊界</div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
