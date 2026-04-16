@@ -1,3 +1,4 @@
+import frame03Url from './assets/frame03.svg';
 import frameUrl from './assets/frame02.svg';
 import frameFillUrl from './assets/frame02-fill.svg';
 import frameFillNoBorderUrl from './assets/frame02-fill-without-border.svg';
@@ -12,6 +13,58 @@ const modes = [
 export default function BorderImageDemo() {
   return (
     <div className={styles.page}>
+      <section className={styles.section}>
+        <div className={styles.sectionLabel}>
+          frame03.svg（300×100，9-slice：角 20×20，上下 260×20，左右 20×60）
+        </div>
+        <div className={styles.originRow}>
+          <img
+            src={frame03Url}
+            width={300}
+            height={100}
+            alt="frame03 原圖"
+            className={styles.originImg}
+          />
+          <div className={styles.sliceAnnotation}>
+            <span>slice: 20px</span>
+            <span>corner zone: 20×20</span>
+            <span>top/bottom edge: 260×20</span>
+            <span>left/right edge: 20×60</span>
+          </div>
+        </div>
+        <div className={styles.resizeWrap}>
+          <div className={styles.grid}>
+            {modes.map(({ key, className, css }) => (
+              <div key={key}>
+                <div className={styles.label}>{key}</div>
+                <div className={`${styles.demo} ${styles.demoFrame03} ${className}`} />
+                <pre
+                  className={styles.code}
+                >{`border-image-source: url(frame03.svg);\nborder-image-slice: 20;\n${css}`}</pre>
+              </div>
+            ))}
+          </div>
+          <div className={styles.resizeHint}>← 拖曳右下角調整寬度，觀察 repeat 模式差異</div>
+        </div>
+        <div className={styles.fillGroupLabel}>background-clip: padding-box（中心填色）</div>
+        <div className={styles.resizeWrap}>
+          <div className={styles.grid}>
+            {modes.map(({ key, className }) => (
+              <div key={key}>
+                <div className={styles.label}>{key}</div>
+                <div
+                  className={`${styles.demo} ${styles.demoFrame03} ${styles.demoFrame03Filled} ${className}`}
+                />
+                <pre
+                  className={styles.code}
+                >{`background: rgba(11,227,148,.25);\nbackground-clip: padding-box;`}</pre>
+              </div>
+            ))}
+          </div>
+          <div className={styles.resizeHint}>← 拖曳右下角調整寬度，觀察填色邊界</div>
+        </div>
+      </section>
+
       <section className={styles.section}>
         <div className={styles.sectionLabel}>原圖 frame02.svg（82×82，9-slice 示意）</div>
         <div className={styles.originRow}>
@@ -34,53 +87,61 @@ export default function BorderImageDemo() {
         <div className={styles.sectionLabel}>
           border-image 應用（width: 100%，可拉伸視窗觀察差異）
         </div>
-        <div className={styles.grid}>
-          {modes.map(({ key, className, css }) => (
-            <div key={key}>
-              <div className={styles.label}>{key}</div>
-              <div className={`${styles.demo} ${className}`} />
-              <pre className={styles.code}>{css}</pre>
-            </div>
-          ))}
+        <div className={styles.resizeWrap}>
+          <div className={styles.grid}>
+            {modes.map(({ key, className, css }) => (
+              <div key={key}>
+                <div className={styles.label}>{key}</div>
+                <div className={`${styles.demo} ${className}`} />
+                <pre className={styles.code}>{css}</pre>
+              </div>
+            ))}
+          </div>
+          <div className={styles.resizeHint}>← 拖曳右下角調整寬度，觀察 repeat 模式差異</div>
         </div>
       </section>
 
       <section className={styles.section}>
         <div className={styles.sectionLabel}>內部填色技巧（三種方法對照）</div>
-        <div className={styles.grid}>
-          <div>
-            <div className={styles.label}>① background（滲入邊框透明區）</div>
-            <div
-              className={`${styles.demo} ${styles.stretch} ${styles.demoColored} ${styles.demoTall}`}
-            />
-            <pre className={styles.code}>
-              {'background: rgba(11,227,148,.25);\n/* 透過 tile 透明像素滲入邊框區 */'}
-            </pre>
+        <div className={styles.resizeWrap}>
+          <div className={styles.grid}>
+            <div>
+              <div className={styles.label}>① background（滲入邊框透明區）</div>
+              <div
+                className={`${styles.demo} ${styles.stretch} ${styles.demoColored} ${styles.demoTall}`}
+              />
+              <pre className={styles.code}>
+                {'background: rgba(11,227,148,.25);\n/* 透過 tile 透明像素滲入邊框區 */'}
+              </pre>
+            </div>
+            <div>
+              <div className={styles.label}>② background-clip: padding-box</div>
+              <div
+                className={`${styles.demo} ${styles.stretch} ${styles.demoColored} ${styles.demoClipped} ${styles.demoTall}`}
+              />
+              <pre className={styles.code}>
+                {
+                  'background: rgba(11,227,148,.25);\nbackground-clip: padding-box;\n/* 填色限定在 border 內側矩形 */'
+                }
+              </pre>
+            </div>
+            <div>
+              <div className={styles.label}>③ border-image-slice: fill（SVG 中心區）</div>
+              <div
+                className={`${styles.demo} ${styles.stretch} ${styles.demoSliceFill} ${styles.demoTall}`}
+                style={{
+                  borderImageSource: `url(${frameFillUrl})`,
+                  borderImageSlice: '32 fill',
+                }}
+              />
+              <pre className={styles.code}>
+                {
+                  '/* SVG 中心 tile 有填色 */\nborder-image-slice: 32 fill;\nbackground: transparent;'
+                }
+              </pre>
+            </div>
           </div>
-          <div>
-            <div className={styles.label}>② background-clip: padding-box</div>
-            <div
-              className={`${styles.demo} ${styles.stretch} ${styles.demoColored} ${styles.demoClipped} ${styles.demoTall}`}
-            />
-            <pre className={styles.code}>
-              {
-                'background: rgba(11,227,148,.25);\nbackground-clip: padding-box;\n/* 填色限定在 border 內側矩形 */'
-              }
-            </pre>
-          </div>
-          <div>
-            <div className={styles.label}>③ border-image-slice: fill（SVG 中心區）</div>
-            <div
-              className={`${styles.demo} ${styles.stretch} ${styles.demoSliceFill} ${styles.demoTall}`}
-              style={{
-                borderImageSource: `url(${frameFillUrl})`,
-                borderImageSlice: '32 fill',
-              }}
-            />
-            <pre className={styles.code}>
-              {'/* SVG 中心 tile 有填色 */\nborder-image-slice: 32 fill;\nbackground: transparent;'}
-            </pre>
-          </div>
+          <div className={styles.resizeHint}>← 拖曳右下角調整寬度，觀察填色差異</div>
         </div>
       </section>
 
@@ -97,22 +158,25 @@ export default function BorderImageDemo() {
         ].map(({ label, url }) => (
           <div key={label} className={styles.fillGroup}>
             <div className={styles.fillGroupLabel}>{label}</div>
-            <div className={styles.grid}>
-              {modes.map(({ key, className }) => (
-                <div key={key}>
-                  <div className={styles.label}>{key}</div>
-                  <div
-                    className={`${styles.demo} ${className} ${styles.demoSvgTest}`}
-                    style={{
-                      borderImageSource: `url(${url})`,
-                      borderImageSlice: '32 fill',
-                    }}
-                  />
-                  <pre
-                    className={styles.code}
-                  >{`border-image-repeat: ${key};\nborder-image-slice: 32 fill;`}</pre>
-                </div>
-              ))}
+            <div className={styles.resizeWrap}>
+              <div className={styles.grid}>
+                {modes.map(({ key, className }) => (
+                  <div key={key}>
+                    <div className={styles.label}>{key}</div>
+                    <div
+                      className={`${styles.demo} ${className} ${styles.demoSvgTest}`}
+                      style={{
+                        borderImageSource: `url(${url})`,
+                        borderImageSlice: '32 fill',
+                      }}
+                    />
+                    <pre
+                      className={styles.code}
+                    >{`border-image-repeat: ${key};\nborder-image-slice: 32 fill;`}</pre>
+                  </div>
+                ))}
+              </div>
+              <div className={styles.resizeHint}>← 拖曳右下角調整寬度，觀察 repeat 模式差異</div>
             </div>
           </div>
         ))}

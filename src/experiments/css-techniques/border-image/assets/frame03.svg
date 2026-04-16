@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_2" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 300 100">
+  <!-- Generator: Adobe Illustrator 30.3.0, SVG Export Plug-In . SVG Version: 2.1.3 Build 182)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #7d5e3c;
+      }
+
+      .st1 {
+        fill: #e3ceb6;
+      }
+    </style>
+  </defs>
+  <rect class="st1" x="20" y="20" width="260" height="60"/>
+  <g>
+    <path class="st0" d="M65,85c-21.06,1.4-35.54,4.41-45,7.22v5.88c21.62-.31,61.04-.74,80-.1,26.9.91,112,2,112,2,0,0-102-18-147-15Z"/>
+    <path class="st1" d="M280,96s-19,4-68,4-72.59-7-120-7-72,3-72,3v-16h260v16Z"/>
+  </g>
+  <path class="st1" d="M208.15,6.08l-4.15,6.92-5.21-6.92c-2.22-.02-4.48-.04-6.79-.08-30.15-.51-62-6-103-6S20,4,20,4v16h260V2s-23.71,3.72-71.85,4.08Z"/>
+  <path class="st1" d="M57,104"/>
+  <path class="st1" d="M2,20h18v60H5S1,58.82,1,48s1-28,1-28Z"/>
+  <path class="st1" d="M298,80h-18V20h15s4,21.18,4,32-1,28-1,28Z"/>
+  <polygon class="st1" points="20 20 2 20 4 7.46 20 4 20 20"/>
+  <path class="st1" d="M280,80v16c12-2,17-2,17-2l1-14h-18Z"/>
+  <path class="st1" d="M293,0c-8.26,1-13,2-13,2v18h15c-1-7-2-20-2-20Z"/>
+  <g>
+    <path class="st0" d="M20,98.1v-5.88c-10.75,3.19-15,6.12-15,6.12,0,0,5.94-.11,15-.24Z"/>
+    <path class="st1" d="M5,80c1,9,0,18.34,0,18.34,0,0,6-1.34,15-2.34v-16H5Z"/>
+  </g>
+</svg>
