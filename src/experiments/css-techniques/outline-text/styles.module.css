@@ -1,0 +1,237 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sectionLabel {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
+  border-bottom: 1px solid var(--color-border);
+  padding-bottom: 0.375rem;
+}
+
+.label {
+  font-size: 0.7rem;
+  font-family: var(--font-mono, monospace);
+  color: var(--color-ink-muted);
+  margin-bottom: 0.5rem;
+}
+
+.code {
+  margin: 0.5rem 0 0;
+  font-size: 0.7rem;
+  font-family: var(--font-mono, monospace);
+  color: var(--color-ink-muted);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  white-space: pre-wrap;
+}
+
+/* ── 展示容器 ── */
+.stage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  padding: 2rem 2.5rem;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: 0.375rem;
+}
+
+.stageDark {
+  background: #1a1a1a;
+  border-color: #2a2a2a;
+}
+
+.stageGradient {
+  background: linear-gradient(135deg, #0be394 0%, #1f7ae0 100%);
+  border-color: transparent;
+}
+
+.stageImage {
+  background-image: url('/sample.png');
+  background-size: cover;
+  background-position: center;
+  border-color: transparent;
+}
+
+/* ── 標題文字共用 ── */
+.title {
+  font-family: 'Noto Serif TC', 'Source Han Serif TC', 'Songti TC', 'PMingLiU', 'SimSun', serif;
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 900;
+  letter-spacing: 0.04em;
+  line-height: 1.35;
+  margin: 0;
+}
+
+/* ── 宋體 vs 黑體對照用 ── */
+.fontSerif {
+  font-family: 'Noto Serif TC', 'Source Han Serif TC', 'Songti TC', 'PMingLiU', 'SimSun', serif;
+}
+
+.fontSans {
+  font-family:
+    'Noto Sans TC', 'Source Han Sans TC', 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+}
+
+/* 細描邊（給宋體用，疊邊較不明顯） */
+.outlineStrokeThin {
+  color: transparent;
+  -webkit-text-stroke: 1.2px var(--color-ink);
+}
+
+/* 假透明：fill 設成容器背景色，paint-order 先描邊再填色
+   * 視覺上像空心，實際是有填色 — 只能用於純色背景 */
+.outlineFakeTransparent {
+  color: var(--color-surface);
+  -webkit-text-stroke: 3px var(--color-ink);
+  paint-order: stroke fill;
+}
+
+/* ── 1. -webkit-text-stroke（外框 + 透明填色）── */
+.outlineStroke {
+  color: transparent;
+  -webkit-text-stroke: 2px var(--color-ink);
+}
+
+.outlineStrokeLight {
+  color: transparent;
+  -webkit-text-stroke: 2px #fff;
+}
+
+.outlineStrokeThick {
+  color: transparent;
+  -webkit-text-stroke: 4px var(--color-ink);
+}
+
+/* ── 2. text-shadow 模擬（無 -webkit- 兼容用，CJK 需要較大 offset 避免填滿） ── */
+.outlineShadow {
+  color: transparent;
+  text-shadow:
+    -2px -2px 0 var(--color-ink),
+    2px -2px 0 var(--color-ink),
+    -2px 2px 0 var(--color-ink),
+    2px 2px 0 var(--color-ink),
+    0 -2px 0 var(--color-ink),
+    0 2px 0 var(--color-ink),
+    -2px 0 0 var(--color-ink),
+    2px 0 0 var(--color-ink);
+}
+
+/* ── 3. 雙層：外框 + 內部漸層 paint-order ── */
+.outlinePaintOrder {
+  color: var(--color-ink);
+  -webkit-text-stroke: 4px #0be394;
+  paint-order: stroke fill;
+}
+
+/* ── 4. 描邊 + 陰影組合 ── */
+.outlineDuo {
+  color: transparent;
+  -webkit-text-stroke: 2px #fff;
+  filter: drop-shadow(2px 4px 0 rgba(0, 0, 0, 0.4));
+}
+
+/* ── 內聯 outline 字（與一般字混排）── */
+.inlineOutline {
+  color: transparent;
+  -webkit-text-stroke: 1.2px currentColor;
+  /* 用 currentColor 跟隨容器文字色 */
+}
+
+/* ── SVG 區塊 ── */
+.svg {
+  width: 100%;
+  max-width: 720px;
+  height: auto;
+  display: block;
+}
+
+.svgText {
+  font-family: 'Noto Serif TC', 'Source Han Serif TC', 'Songti TC', 'PMingLiU', 'SimSun', serif;
+  font-weight: 900;
+  font-size: 96px;
+  fill: var(--color-ink);
+}
+
+.svgTextOutline {
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-width: 2;
+}
+
+.svgTextOutlineDark {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2;
+}
+
+.svgTextOutlineThick {
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-width: 4;
+  stroke-linejoin: round;
+}
+
+.svgTextOutlineDashed {
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-width: 2;
+  stroke-dasharray: 6 4;
+}
+
+/* ── 方案一：SVG mask 切掉 stroke 內半部 ── */
+.svgMaskOutline {
+  fill: none;
+  stroke: var(--color-ink);
+  stroke-width: 8;
+  stroke-linejoin: round;
+  paint-order: stroke;
+}
+
+.svgMaskOutlineLight {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 8;
+  stroke-linejoin: round;
+  paint-order: stroke;
+}
+
+/* ── 方案二：feMorphology 像素膨脹 filter ── */
+.outlineMorphologyDark {
+  filter: url(#pixel-outline-dark);
+}
+
+.outlineMorphologyLight {
+  filter: url(#pixel-outline-light);
+}
+
+.outlineMorphologyThick {
+  filter: url(#pixel-outline-thick);
+}
+
+/* ── 對照表 grid ── */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+}
+
+@media (min-width: 720px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
