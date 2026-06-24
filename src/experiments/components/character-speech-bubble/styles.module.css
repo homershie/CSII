@@ -1,0 +1,162 @@
+/* ============================================================
+   Character Speech Bubble
+   角色對話框壓在景點圖上
+   結構：白底 .bubble +（::before 三角話尾）+（::after 角色圖）
+   ------------------------------------------------------------
+   左 → 右：[角色 ::after] [三角 ::before] [白底對話框 .bubble]
+   三角話尾從對話框左緣指向角色，看起來像角色在說話。
+   ============================================================ */
+
+/* 舞台＝景點圖區域。bubble 用絕對定位壓在右下角。
+   overflow: visible 讓對話框可以微微凸出圖外（Figma 的 -10 / -26.9）。
+   container-type: inline-size → 讓 bubble 依「圖的寬度」響應，
+   而非視窗寬度，所以底下的拖曳預覽也能觸發斷點。 */
+.stage {
+  position: relative;
+  aspect-ratio: 3 / 4; /* daxi banner 原圖比例 */
+  border-radius: 16px;
+  container-type: inline-size;
+}
+
+.photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+/* ── 對話框本體 ───────────────────────────────────────────
+   所有尺寸集中在這組 CSS 變數，方便照 Figma 微調。
+   不分段：bubble 寬用 clamp 隨圖流動，下/上限＝Figma 手機/PC 兩個尺寸。
+   角色、三角、字級是固定 px（你 Figma 兩段本來就同值），不隨圖縮。 */
+.bubble {
+  /* ▽ designer knobs ▽ */
+  --bubble-min: 272px; /* Figma 手機 @375 對話框寬（clamp 下限） */
+  --bubble-max: 508px; /* Figma PC @584 對話框寬（clamp 上限） */
+  --radius: 32px; /* 圓角 */
+  --pad-y: 16px; /* Figma padding 16px 24px */
+  --pad-x: 24px;
+  --font: 24px;
+
+  /* 三角話尾：left/top 相對對話框邊框，照 Figma 寫法（負值＝凸出左側） */
+  --tail-left: -12px;
+  --tail-top: 30px;
+
+  /* 角色：left 相對對話框；負值大於框寬時會疊進框內左下角 */
+  --char-left: -96px;
+  --char-w: 80px; /* 方形 80×80 不變 */
+  --char-top: 0px;
+
+  --offset-right: -10px; /* Figma：凸出圖右緣 */
+  --offset-bottom: -28px; /* Figma：凸出圖下緣 */
+  --ink: #0e3f6e; /* 文字色（與陰影同色系） */
+  /* △ designer knobs △ */
+
+  position: absolute;
+  right: var(--offset-right);
+  bottom: var(--offset-bottom);
+
+  /* clamp 隨圖流動：87cqw（≈508/584）在兩個 Figma 尺寸間平滑插值。
+     stage≥584 → 508 封頂；stage≤312 → 272 觸底；中間隨圖縮放，不分段不跳。 */
+  width: clamp(var(--bubble-min), 87cqw, var(--bubble-max));
+  box-sizing: border-box;
+
+  /* Figma 對話 div：flex 直排、左對齊、gap 8（多段文字才看得出 gap） */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  padding: var(--pad-y) var(--pad-x);
+
+  background: #fff;
+  border-radius: var(--radius);
+  color: var(--ink);
+  font-size: var(--font);
+  line-height: 1.6;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+
+  /* 「全部一起加上陰影」：filter 會作用到元素＋它的 ::before/::after，
+     drop-shadow 依 alpha 形狀產生陰影，所以圓角框、三角、角色 png
+     會共用同一道柔和陰影。box-shadow 只罩得到方框本身，故改用 drop-shadow。
+     對應 box-shadow: 1px 4px 8px 0 rgba(14,63,110,.25)（drop-shadow 無 spread 參數）。 */
+  filter: drop-shadow(1px 4px 8px rgba(14, 63, 110, 0.25));
+}
+
+/* ── ::before 三角話尾 ──
+   triangle.svg 原生 14×25、尖端朝左，貼著對話框左緣指向角色。
+   位置用 left/top 照 Figma（--tail-left / --tail-top）。 */
+.bubble::before {
+  content: '';
+  position: absolute;
+  left: var(--tail-left);
+  top: var(--tail-top);
+  width: 14px;
+  height: 25px;
+  background: url('./assets/triangle.svg') no-repeat center / contain;
+}
+
+/* ── ::after 角色圖 ──
+   固定 80×80 方形，用 left/top 疊在對話框左下外側（不隨圖縮）。
+   background-size:100% 鋪滿整個 footprint；換成裁好的立繪可直接替換。 */
+.bubble::after {
+  content: '';
+  position: absolute;
+  left: var(--char-left);
+  top: var(--char-top);
+  width: var(--char-w);
+  height: var(--char-w);
+  background-image: url('./assets/chr.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+
+/* ============================================================
+   以下純為 demo 頁面排版，與技巧本身無關
+   ============================================================ */
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  color: var(--color-ink);
+}
+
+.sectionLabel {
+  font-size: 13px;
+  color: var(--color-ink-muted);
+  margin-bottom: 10px;
+}
+
+/* 可拖曳寬度的預覽框，觀察 RWD 斷點 */
+.resizeWrap {
+  resize: horizontal;
+  overflow: auto;
+  min-width: 280px;
+  max-width: 100%;
+  width: 624px; /* 預設：扣掉左右 padding 後 stage≈584＝Figma 桌機圖寬 */
+  /* 上下左右留白，讓凸出的對話框與升起的角色不被外層裁掉 */
+  padding: 8px 20px 40px 20px;
+  border: 1px dashed var(--color-border);
+  border-radius: 12px;
+}
+
+.resizeHint {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--color-ink-muted);
+}
+
+.code {
+  margin: 0;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #0f1620;
+  color: #cbd5e1;
+  font-family: var(--font-mono, ui-monospace, monospace);
+  font-size: 12px;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
